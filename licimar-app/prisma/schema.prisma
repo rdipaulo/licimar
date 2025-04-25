@@ -4,53 +4,57 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url       = env("DATABASE_URL")
 }
 
 model Vendedor {
-  id_vendedor Int     @id @default(autoincrement())
+  id_vendedor Int      @id @default(autoincrement())
   nome        String
-  cpf         String  @unique
+  cpf         String   @unique
   telefone    String?
   pedidos     Pedido[]
   dividas     Divida[]
 }
 
 model Produto {
-  id_produto       Int             @id @default(autoincrement())
-  nome             String
-  tipo_produto_id  Int
-  tipo_produto     TiposProduto    @relation(fields: [tipo_produto_id], references: [id_tipos_produto])
-  pedidos          PedidoProduto[]
-  retornos         Retorno[]
-  preco            Decimal
+  id_produto      Int             @id @default(autoincrement())
+  nome            String
+  marca           String?
+  tipo_produto_id Int
+  tipo_produto    TiposProduto    @relation(fields: [tipo_produto_id], references: [id_tipos_produto])
+  pedidos         PedidoProduto[]
+  retornos        Retorno[]
+  preco           Decimal
+  estoque         Int            @default(0) //valor padrão 0
 }
 
 model TiposProduto {
   id_tipos_produto Int       @id @default(autoincrement())
-  nome             String
+  nome             String    @unique
   produtos         Produto[]
 }
 
 model Pedido {
-  id_pedido     Int             @id @default(autoincrement())
-  vendedor_id   Int
-  data_pedido   DateTime        @default(now())
-  status_pedido String          @default("pendente")
-  vendedor      Vendedor        @relation(fields: [vendedor_id], references: [id_vendedor])
-  produtos      PedidoProduto[]
+  id_pedido           Int             @id @default(autoincrement())
+  vendedor_id         Int
+  data_pedido         DateTime        @default(now())
+  status_pedido       String        @default("pendente")
+  vendedor            Vendedor        @relation(fields: [vendedor_id], references: [id_vendedor])
+  produtos            PedidoProduto[]
+  quantidade_gelo_seco Decimal?
+  preco_gelo_seco    Decimal?
 }
 
 model PedidoProduto {
-  id_pedido_produto Int     @id @default(autoincrement())
-  pedido_id         Int
-  produto_id        Int
-  quantidade_pedida Int
-  quantidade_retorno Int
-  quantidade_vendida Int    @default(0)
-  pedido            Pedido  @relation(fields: [pedido_id], references: [id_pedido])
-  produto           Produto @relation(fields: [produto_id], references: [id_produto])
-  retornos          Retorno[]
+  id_pedido_produto  Int       @id @default(autoincrement())
+  pedido_id          Int
+  produto_id         Int
+  quantidade_pedida  Int
+  quantidade_retorno Int       @default(0)
+  quantidade_vendida Int       @default(0)
+  pedido             Pedido    @relation(fields: [pedido_id], references: [id_pedido])
+  produto            Produto   @relation(fields: [produto_id], references: [id_produto])
+  retornos           Retorno[]
 }
 
 model Retorno {

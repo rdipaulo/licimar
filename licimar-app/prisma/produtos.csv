@@ -1,0 +1,70 @@
+﻿nome;marca;tipo;preco;estoque
+chicabon;kibon;sorvete;8;350
+coco kibon;kibon;sorvete;8,5;150
+coco nestle;nestle;sorvete;8,5;150
+la fruta manga;nestle;sorvete;8,5;200
+fruttare uva;kibon;sorvete;8;100
+fruttare limao;kibon;sorvete;8;100
+fruttare morango;kibon;sorvete;8;100
+fruttare abacaxi;kibon;sorvete;8;100
+mini eskibon;kibon;sorvete;15;50
+mescladinho;kibon;sorvete;5;50
+óreo copo;nestle;sorvete;21;50
+baton;nestle;sorvete;6;100
+oreo palito;nestle;sorvete;19;100
+kit-kat palito;nestle;sorvete;19;100
+morango ao leite;nestle;sorvete;8,5;100
+maracuja ao leite;nestle;sorvete;8,5;100
+mega trufa;nestle;sorvete;19;100
+mega classico;nestle;sorvete;19;100
+mega amendoas;nestle;sorvete;19;100
+mega pistache;nestle;sorvete;19;100
+frutilly;kibon;sorvete;6;200
+fini tubes morango;nestle;sorvete;7,5;100
+fini tubes tutti fruti;nestle;sorvete;7,5;100
+bombom garato;nestle;sorvete;10;100
+caribe;nestle;sorvete;10;100
+moca brigadeiro;nestle;sorvete;10;150
+prestigio;nestle;sorvete;15;100
+eskibon barrinha;kibon;sorvete;9;200
+brigadeiro kibon;kibon;sorvete;9,5;200
+tablito classico;kibon;sorvete;10;200
+tablito nutella;kibon;sorvete;10;100
+tablito tres chocolates;kibon;sorvete;10;100
+chambinho;nestle;sorvete;8,5;100
+fini dentadura;nestle;sorvete;8,5;100
+Magnun classico;kibon;sorvete;17;150
+Magnun branco;kibon;sorvete;17;100
+Magnun avela;kibon;sorvete;17;100
+Magnun cookies;kibon;sorvete;17;100
+Magnun menos acucar;kibon;sorvete;17;100
+Magnun amendoas;kibon;sorvete;17;100
+Magnun pistache;kibon;sorvete;19;100
+oreo biscoito;nestle;sorvete;17;100
+laka;nestle;sorvete;17;
+laka oreo;nestle;sorvete;17;100
+sonho de valsa;nestle;sorvete;17;100
+diamante negro;nestle;sorvete;17;100
+leite moca;nestle;sorvete;10;100
+corneto m&m;kibon;sorvete;14;200
+corneto unicorneto;kibon;sorvete;14;100
+corneto brigadeiro ;kibon;sorvete;14;100
+corneto crocante;kibon;sorvete;12;100
+cone kit-kat;nestle;sorvete;18;100
+cone crocante;nestle;sorvete;18;100
+italia palito;italia;sorvete;6,5;500
+italia zero acucar;italia;sorvete;8;200
+gelo seco;air liquid;gelo seco;28;200
+coca lata;coca-cola;bebida;6;20
+agua sem gas 500 ml;;bebida;2,5;50
+agua com gas 500 ml;;bebida;3,5;30
+guaraviton;;bebida;6;20
+cerveja brahma;;bebida;8;25
+cerveja heineken;;bebida;12;25
+guaravita;;bebida;2,5;50
+pingo de leite;;bomboniere;2,5;20
+bananada;;bomboniere;2;20
+pe de moleque;;bomboniere;2;20
+pe de moca;;bomboniere;2;20
+doce de abobora;;bomboniere;2;20
+amendoin 50 grs;;bomboniere;1;20
