@@ -58,64 +58,74 @@ function importProdutosCsv() {
                         delimiter: ';',
                     }, function (err, records) { return __awaiter(_this, void 0, void 0, function () {
                         var _i, records_1, record, nome, marca, tipoNome, precoStr, estoqueStr, preco, estoque, tipoProduto, error_1;
-                        return __generator(this, function (_a) {
-                            switch (_a.label) {
+                        var _a, _b, _c, _d, _e;
+                        return __generator(this, function (_f) {
+                            switch (_f.label) {
                                 case 0:
                                     if (!err) return [3 /*break*/, 2];
                                     console.error('Erro ao analisar o arquivo CSV:', err);
                                     return [4 /*yield*/, prisma.$disconnect()];
                                 case 1:
-                                    _a.sent();
+                                    _f.sent();
                                     return [2 /*return*/];
                                 case 2:
-                                    _a.trys.push([2, 9, 10, 12]);
+                                    _f.trys.push([2, 10, 11, 13]);
                                     _i = 0, records_1 = records;
-                                    _a.label = 3;
+                                    _f.label = 3;
                                 case 3:
-                                    if (!(_i < records_1.length)) return [3 /*break*/, 8];
+                                    if (!(_i < records_1.length)) return [3 /*break*/, 9];
                                     record = records_1[_i];
-                                    console.log('Registro completo do CSV:', record);
-                                    nome = record.nome, marca = record.marca, tipoNome = record.tipo, precoStr = record.preco, estoqueStr = record.estoque;
-                                    console.log('Valor de nome APÓS desestruturação:', nome); // LOG ADICIONADO
+                                    nome = (_a = record['nome']) === null || _a === void 0 ? void 0 : _a.trim();
+                                    marca = (_b = record['marca']) === null || _b === void 0 ? void 0 : _b.trim();
+                                    tipoNome = (_c = record['tipo']) === null || _c === void 0 ? void 0 : _c.trim().toLowerCase();
+                                    precoStr = (_d = record['preco']) === null || _d === void 0 ? void 0 : _d.trim();
+                                    estoqueStr = (_e = record['estoque']) === null || _e === void 0 ? void 0 : _e.trim();
                                     preco = parseFloat(precoStr);
-                                    estoque = parseInt(estoqueStr, 10);
+                                    estoque = estoqueStr ? parseInt(estoqueStr, 10) : null;
                                     return [4 /*yield*/, prisma.tiposProduto.findUnique({
-                                            where: { nome: tipoNome === null || tipoNome === void 0 ? void 0 : tipoNome.trim() },
+                                            where: { nome: tipoNome },
                                         })];
                                 case 4:
-                                    tipoProduto = _a.sent();
-                                    if (!tipoProduto) return [3 /*break*/, 6];
-                                    return [4 /*yield*/, prisma.produto.create({
-                                            data: {
-                                                nome: nome,
-                                                marca: marca,
-                                                preco: preco,
-                                                estoque: estoque,
-                                                tipo_produto_id: tipoProduto.id_tipos_produto,
-                                            },
+                                    tipoProduto = _f.sent();
+                                    if (!!tipoProduto) return [3 /*break*/, 6];
+                                    return [4 /*yield*/, prisma.tiposProduto.create({
+                                            data: { nome: tipoNome },
                                         })];
                                 case 5:
-                                    _a.sent();
-                                    console.log('Produto criado com sucesso:', nome);
-                                    return [3 /*break*/, 7];
-                                case 6:
-                                    console.warn("Tipo de produto n\u00E3o encontrado: ".concat(tipoNome, " para o produto ").concat(nome));
-                                    _a.label = 7;
+                                    tipoProduto = _f.sent();
+                                    console.log("Tipo de produto criado: ".concat(tipoNome));
+                                    _f.label = 6;
+                                case 6: 
+                                // Criar o produto com a referência correta
+                                return [4 /*yield*/, prisma.produto.create({
+                                        data: {
+                                            nome: nome,
+                                            marca: marca || null,
+                                            preco: preco,
+                                            estoque: estoque,
+                                            tipo_produto_id: tipoProduto.id_tipos_produto,
+                                        },
+                                    })];
                                 case 7:
+                                    // Criar o produto com a referência correta
+                                    _f.sent();
+                                    console.log('Produto criado com sucesso:', nome);
+                                    _f.label = 8;
+                                case 8:
                                     _i++;
                                     return [3 /*break*/, 3];
-                                case 8:
-                                    console.log('Dados de produtos importados com sucesso do CSV!');
-                                    return [3 /*break*/, 12];
                                 case 9:
-                                    error_1 = _a.sent();
+                                    console.log('Dados de produtos importados com sucesso do CSV!');
+                                    return [3 /*break*/, 13];
+                                case 10:
+                                    error_1 = _f.sent();
                                     console.error('Erro ao inserir dados no banco de dados:', error_1);
-                                    return [3 /*break*/, 12];
-                                case 10: return [4 /*yield*/, prisma.$disconnect()];
-                                case 11:
-                                    _a.sent();
+                                    return [3 /*break*/, 13];
+                                case 11: return [4 /*yield*/, prisma.$disconnect()];
+                                case 12:
+                                    _f.sent();
                                     return [7 /*endfinally*/];
-                                case 12: return [2 /*return*/];
+                                case 13: return [2 /*return*/];
                             }
                         });
                     }); });
